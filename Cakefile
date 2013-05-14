@@ -67,8 +67,9 @@ task 'dist', 'Build a distribution', ->
           fs.unlink 'dist/_swagger-ui.js'
           fs.unlink 'dist/_swagger-ui-templates.js'
           console.log '   : Minifying all...'
-          exec 'java -jar "./bin/yuicompressor-2.4.7.jar" --type js -o ' + 'dist/swagger-ui.min.js ' + 'dist/swagger-ui.js', (err, stdout, stderr) ->
+          exec 'java -jar "./bin/yuicompressor-2.4.7.jar" --type js -o ' + 'dist/lib/swagger-ui.min.js ' + 'dist/swagger-ui.js', (err, stdout, stderr) ->
             throw err if err
+            fs.unlink 'dist/swagger-ui.js'
             pack()
 
   pack = ->
